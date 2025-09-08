@@ -2188,6 +2188,7 @@ GameObject:
   - component: {fileID: 1550971383}
   - component: {fileID: 1550971385}
   - component: {fileID: 1550971386}
+  - component: {fileID: 1550971387}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2255,6 +2256,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currOrder: {fileID: 0}
   nextOrder: {fileID: 0}
+--- !u!114 &1550971387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550971382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 902f6968e8192f34aa03bba5ef616cfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  burgerOnly: {fileID: 0}
+  friesOnly: {fileID: 0}
+  drinkOnly: {fileID: 0}
+  burgerFries: {fileID: 0}
+  burgerDrink: {fileID: 0}
+  friesDrink: {fileID: 0}
+  fullSet: {fileID: 0}
+  BurgerTime: 3
+  FriesTime: 1.5
+  DrinkTime: 1
+  FullSetTime: 4.5
 --- !u!1 &1685515660
 GameObject:
   m_ObjectHideFlags: 0

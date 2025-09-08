@@ -1,16 +1,26 @@
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class CustomerBehaviour : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [Header("Customer info")]
+    [SerializeField]
+    private Order myOrder;
+    [SerializeField]
+    private float patience;
+
+    [Header("UI")]
+    [SerializeField]
+    private GameObject angry1;
+    private GameObject angry2;
+
+    private void Start()
     {
-        
+        angry1.SetActive(false);
+        angry2.SetActive(false);
+
+        myOrder = GetComponentInParent<OrderGenerator>().CreateOrder();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }
