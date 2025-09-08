@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CartController : MonoBehaviour
+public class CartControllerHorz : MonoBehaviour
 {
     private enum MoveState
     {
@@ -53,14 +53,14 @@ public class CartController : MonoBehaviour
         // player tap to either start moving, or start moving sideways
         if (Input.GetKeyDown(KeyCode.V))
         {
-            if (moveState == MoveState.UP || moveState == MoveState.DOWN)
+            if (moveState == MoveState.LEFT || moveState == MoveState.RIGHT)
             {
                 returnTrigger.gameObject.SetActive(true);
-                moveState = MoveState.RIGHT;
+                moveState = MoveState.DOWN;
             }
             else if (moveState == MoveState.STOP)
             {
-                moveState = MoveState.UP;
+                moveState = MoveState.RIGHT;
             }
         }
     }
@@ -81,7 +81,7 @@ public class CartController : MonoBehaviour
         }
         else
         {
-            // must be a customer alr (im lazy to add the triggers here during runtime
+            // must be a customer alr (im lazy to add the triggers here during runtime)
             TriggerCustomer();
         }
     }
@@ -92,13 +92,13 @@ public class CartController : MonoBehaviour
     {
         Debug.Log("trigger customer");
 
-        moveState = MoveState.LEFT;
+        moveState = MoveState.UP;
     }
 
     private void TriggerTurn()
     {
         Debug.Log("trigger turn");
-        moveState = MoveState.DOWN;
+        moveState = MoveState.LEFT;
     }
 
     private void TriggerPickup()
@@ -109,17 +109,22 @@ public class CartController : MonoBehaviour
         moveState = MoveState.STOP;
 
         // reset pos to prevent problems with returnTrigger
-        transform.position = new Vector3(-6, -1.55f, 0);
+        transform.localPosition = new Vector3(-6, transform.localPosition.y, 0);
 
         // toss the currently held food, pick up the next available thing on the conveyor
+
+        // return speed mult to normal
+        speedMultiplier = 1f;
     }
 
     private void TriggerReturn()
     {
         Debug.Log("trigger return");
         returnTrigger.gameObject.SetActive(false);
-        transform.position = new Vector3(-6, transform.position.y, 0);
-        moveState = MoveState.DOWN;
+        transform.localPosition = new Vector3(-6, transform.localPosition.y, 0);
+        //transform.position = new Vector3(transform.position.x, -5.5f, 0);
+        moveState = MoveState.LEFT;
+        speedMultiplier = 1.35f;
     }
     #endregion
 }
